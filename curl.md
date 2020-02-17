@@ -6,7 +6,7 @@
 
 后来，有人提出 Curl 实际上可能是一个聪明的“递归缩写”(首字母缩写中的第一个字母指的是同一个单词) : “ Curl URL Request Library”
 
-摘自 [电子书 Everything curl](https://ec.haxx.se/)
+摘自 [电子书 Everything curl](https://ec.haxx.se/)，这是一本非常全的关于curl的电子书，可以查阅。
 
 ## 常用参数
 
@@ -112,3 +112,4 @@ from https://jvns.ca/blog/2019/08/27/curl-exercises/
 ## Other resources
 
 1. [curl 命令学习使用小结](https://segmentfault.com/a/1190000021715444)
+1. [Curl Documentation page](https://curl.haxx.se/docs/)
