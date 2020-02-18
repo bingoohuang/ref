@@ -2,6 +2,10 @@
 
 一款命令行下最快的文本搜索神器 [RipGrep](https://github.com/BurntSushi/ripgrep)，据说是Rust写的，VSCode 也从 1.11 版本开始默认将 RipGrep 做为其搜索工具，由此其功能强大可见一斑。
 
+## 安装
+
+1.  mac `brew install ripgrep`
+
 ## Ripgrep 支持的一些特性
 
 1. 自动递归搜索 （grep 需要 -R）。
