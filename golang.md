@@ -13,3 +13,4 @@
 ### Tools
 
 1. [An HTTP/HTTPS intercept proxy GUI](https://github.com/rhaidiz/broxy)
+1. [How Thanos Would Program in Go](https://www.bwplotka.dev/2020/how-thanos-would-program-in-go/)
