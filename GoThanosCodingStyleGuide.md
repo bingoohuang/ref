@@ -74,8 +74,6 @@ For code written in [Go](https://golang.org/) we use the standard Go style guide
 than the standard guides. This ensures even better consistency in modern distributed system databases like Thanos, where reliability, performance,
 and maintainability are extremely important.
 
-<img src="../img/go-in-thanos.jpg" class="img-fluid" alt="Go in Thanos" />
-
 <!--
 NOTE: Because of blackfriday bug, we have to change those code snippet to `< highlight go >` hugo shortcodes during `websitepreprocessing.sh` for Thanos website.
 -->
