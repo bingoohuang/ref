@@ -1,13 +1,12 @@
+# Thanos Coding Style Guide
+
 ---
 title: Coding Style Guide
 type: docs
 menu: contributing
 ---
 
-https://www.bwplotka.dev/2020/how-thanos-would-program-in-go/
-https://github.com/thanos-io/thanos/blob/master/docs/contributing/coding-style-guide.md
-
-# Thanos Coding Style Guide
+[blog](https://www.bwplotka.dev/2020/how-thanos-would-program-in-go/), [orignal](https://github.com/thanos-io/thanos/blob/master/docs/contributing/coding-style-guide.md)
 
 This document details the official style guides for the various languages we use in the Thanos project.
 Feel free to familiarize yourself with and refer to this document during code reviews. If something in our codebase does not match the style, it means it
@@ -27,47 +26,48 @@ development. Some of those are currently impossible to detect with linters. Idea
 
 ## TOC
 
-- [Thanos Coding Style Guide](coding-style-guide.md#thanos-coding-style-guide)
-  * [TOC](coding-style-guide.md#toc)
-- [Go](coding-style-guide.md#go)
-  * [Development / Code Review](coding-style-guide.md#development-code-review)
-    + [Reliability](coding-style-guide.md#reliability)
-      - [Defers: Don't Forget to Check Returned Errors](coding-style-guide.md#defers-don-t-forget-to-check-returned-errors)
-      - [Exhaust Readers](coding-style-guide.md#exhaust-readers)
-      - [Avoid Globals](coding-style-guide.md#avoid-globals)
-      - [Never Use Panics](coding-style-guide.md#never-use-panics)
-      - [Avoid Using the `reflect` or `unsafe` Packages](coding-style-guide.md#avoid-using-the-reflect-or-unsafe-packages)
-      - [Avoid variable shadowing](coding-style-guide.md#avoid-variable-shadowing)
-    + [Performance](coding-style-guide.md#performance)
-      - [Pre-allocating Slices and Maps](coding-style-guide.md#pre-allocating-slices-and-maps)
-      - [Reuse arrays](coding-style-guide.md#reuse-arrays)
-    + [Readability](coding-style-guide.md#readability)
-      - [Keep the Interface Narrow; Avoid Shallow Functions](coding-style-guide.md#keep-the-interface-narrow-avoid-shallow-functions)
-      - [Use Named Return Parameters Carefully](coding-style-guide.md#use-named-return-parameters-carefully)
-      - [Clean Defer Only if Function Fails](coding-style-guide.md#clean-defer-only-if-function-fails)
-      - [Explicitly Handled Returned Errors](coding-style-guide.md#explicitly-handled-returned-errors)
-      - [Avoid Defining Variables Used Only Once.](coding-style-guide.md#avoid-defining-variables-used-only-once)
-      - [Only Two Ways of Formatting Functions/Methods](coding-style-guide.md#only-two-ways-of-formatting-functions-methods)
-      - [Control Structure: Prefer early returns and avoid `else`](coding-style-guide.md#control-structure-prefer-early-returns-and-avoid-else)
-      - [Wrap Errors for More Context; Don't Repeat "failed ..." There.](coding-style-guide.md#wrap-errors-for-more-context-don-t-repeat-failed-there)
-      - [Use the Blank Identifier `_`](coding-style-guide.md#use-the-blank-identifier)
-      - [Rules for Log Messages](coding-style-guide.md#rules-for-log-messages)
-      - [Comment Necessary Surprises](coding-style-guide.md#comment-necessary-surprises)
-    + [Testing](coding-style-guide.md#testing)
-      - [Table Tests](coding-style-guide.md#table-tests)
-      - [Tests for Packages / Structs That Involve `time` package.](coding-style-guide.md#tests-for-packages-structs-that-involve-time-package)
-  * [Enforced by Linters](coding-style-guide.md#enforced-by-linters)
-      - [Avoid Prints](coding-style-guide.md#avoid-prints)
-      - [Ensure Prometheus Metric Registration](coding-style-guide.md#ensure-prometheus-metric-registration)
-      - [go vet](coding-style-guide.md#go-vet)
-      - [golangci-lint](coding-style-guide.md#golangci-lint)
-      - [misspell](coding-style-guide.md#misspell)
-      - [Comments Should be Full Sentences](coding-style-guide.md#comments-should-be-full-sentences)
-- [Bash](coding-style-guide.md#bash)
+- [Thanos Coding Style Guide](#thanos-coding-style-guide)
+  - [menu: contributing](#menu-contributing)
+  - [TOC](#toc)
+  - [Go](#go)
+  - [Development / Code Review](#development--code-review)
+    - [Reliability](#reliability)
+      - [Defers: Don't Forget to Check Returned Errors](#defers-dont-forget-to-check-returned-errors)
+      - [Exhaust Readers](#exhaust-readers)
+      - [Avoid Globals](#avoid-globals)
+      - [Never Use Panics](#never-use-panics)
+      - [Avoid Using the `reflect` or `unsafe` Packages](#avoid-using-the-reflect-or-unsafe-packages)
+      - [Avoid variable shadowing](#avoid-variable-shadowing)
+    - [Performance](#performance)
+      - [Pre-allocating Slices and Maps](#pre-allocating-slices-and-maps)
+      - [Reuse arrays](#reuse-arrays)
+    - [Readability](#readability)
+      - [Keep the Interface Narrow; Avoid Shallow Functions](#keep-the-interface-narrow-avoid-shallow-functions)
+      - [Use Named Return Parameters Carefully](#use-named-return-parameters-carefully)
+      - [Clean Defer Only if Function Fails](#clean-defer-only-if-function-fails)
+      - [Explicitly Handled Returned Errors](#explicitly-handled-returned-errors)
+      - [Avoid Defining Variables Used Only Once.](#avoid-defining-variables-used-only-once)
+      - [Only Two Ways of Formatting Functions/Methods](#only-two-ways-of-formatting-functionsmethods)
+      - [Control Structure: Prefer early returns and avoid `else`](#control-structure-prefer-early-returns-and-avoid-else)
+      - [Wrap Errors for More Context; Don't Repeat "failed ..." There.](#wrap-errors-for-more-context-dont-repeat-%22failed-%22-there)
+      - [Use the Blank Identifier `_`](#use-the-blank-identifier)
+      - [Rules for Log Messages](#rules-for-log-messages)
+      - [Comment Necessary Surprises](#comment-necessary-surprises)
+    - [Testing](#testing)
+      - [Table Tests](#table-tests)
+      - [Tests for Packages / Structs That Involve `time` package.](#tests-for-packages--structs-that-involve-time-package)
+  - [Enforced by Linters](#enforced-by-linters)
+    - [Avoid Prints](#avoid-prints)
+    - [Ensure Prometheus Metric Registration](#ensure-prometheus-metric-registration)
+    - [go vet](#go-vet)
+    - [golangci-lint](#golangci-lint)
+    - [misspell](#misspell)
+    - [Comments Should be Full Sentences](#comments-should-be-full-sentences)
+  - [Bash](#bash)
 
 <small><i>Table of contents generated with <a href='http://ecotrust-canada.github.io/markdown-toc/'>markdown-toc</a></i></small>
 
-# Go
+## Go
 
 For code written in [Go](https://golang.org/) we use the standard Go style guides ([Effective Go](https://golang.org/doc/effective_go.html),
 [CodeReviewComments](https://github.com/golang/go/wiki/CodeReviewComments)) with a few additional rules that make certain areas stricter
@@ -1025,13 +1025,13 @@ func (s *SomeType) IsExpired(created time.Time) bool {
 This is the list of rules we ensure automatically. This section is for those who are curious why such linting rules
 were added or want similar ones in their Go project. 🤗
 
-#### Avoid Prints
+### Avoid Prints
 
 Never use `print`. Always use a passed `go-kit/log.Logger`.
 
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L311).
 
-#### Ensure Prometheus Metric Registration
+### Ensure Prometheus Metric Registration
 
 It's very easy to forget to add Prometheus metrics (e.g a `prometheus.Counter`) into a `registry.MustRegister` function.
 To avoid this, we ensure all metrics are created via `promtest.With(r).New*` and we disallow the old type of registration.
@@ -1039,13 +1039,13 @@ Read more about the problem [here](https://github.com/thanos-io/thanos/issues/21
 
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L308).
 
-#### go vet
+### go vet
 
 Standard Go vet is quite strict, but for a good reason. Always vet your Go code!
 
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L313).
 
-#### golangci-lint
+### golangci-lint
 
 [golangci-lint](https://github.com/golangci/golangci-lint) is an amazing tool that allows running a set of different custom
 linters from the Go community against your code. Give it a star and use it. (:
@@ -1053,7 +1053,7 @@ linters from the Go community against your code. Give it a star and use it. (:
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L315) with
 [those linters](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/.golangci.yml#L31) enabled.
 
-#### misspell
+### misspell
 
 Misspell is amazing, it catches typos in comments and docs.
 
@@ -1061,14 +1061,14 @@ No Grammarly plugin for this yet ): (We wish).
 
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L317).
 
-#### Comments Should be Full Sentences
+### Comments Should be Full Sentences
 
 All comments should be full sentences. They should start with an uppercase letter and end with a period.
 
 Ensured [here](https://github.com/thanos-io/thanos/blob/40526f52f54d4501737e5246c0e71e56dd7e0b2d/Makefile#L194).
 
-# Bash
+## Bash
 
 Overall try to NOT use bash. For scripts longer than 30 lines, consider writing it in Go as we did [here](https://github.com/thanos-io/thanos/blob/55cb8ca38b3539381dc6a781e637df15c694e50a/scripts/copyright/copyright.go).
 
-If you have to, we follow the Google Shell style guide: https://google.github.io/styleguide/shellguide.html
+If you have to, we follow the [Google Shell style guide](https://google.github.io/styleguide/shellguide.html)
