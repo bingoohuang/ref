@@ -14,3 +14,8 @@
 
 1. [An HTTP/HTTPS intercept proxy GUI](https://github.com/rhaidiz/broxy)
 1. [How Thanos Would Program in Go](https://www.bwplotka.dev/2020/how-thanos-would-program-in-go/)
+
+### Lazy serials
+
+1. [lazyhub - Terminal UI Client for GitHub using gocui.](https://github.com/ryo-ma/lazyhub)
+1. [lazygit A simple terminal UI for git commands, written in Go with the gocui library.](https://github.com/jesseduffield/lazygit)
