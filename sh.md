@@ -6,7 +6,7 @@
     ```
 1. `install mysql-client@5.7` mac上安装mysql client
 1. 在.zshrc中`RPROMPT="%{$fg[green]%}[%D{%c}]"`, 在命令行最右边展示`[二  3/ 3 17:14:39 2020]`的效果
-1. 查看当前目录可用空间`df -h .`，及子目录大小`du -hd 1 . | sort -hr`, thanks [](https://leancrew.com/all-this/2020/05/sort-of-handy/)
+1. 查看当前目录可用空间`df -h .`，及子目录大小`du -hd 1 . | sort -hr`, thanks [Dr. Drang](https://leancrew.com/all-this/2020/05/sort-of-handy/)
 
     ```bash
     [root@iz2ze69kp3h9r3i5bd82bkz ~]# df -h .
