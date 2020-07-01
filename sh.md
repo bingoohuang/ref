@@ -24,3 +24,12 @@
     8.0K	./.pip
     8.0K	./.oracle_jre_usage
     ```
+    
+1. The following are from [My Favorite CLI Tools](https://medium.com/swlh/my-favorite-cli-tools-c2fa484cee52)
+1. [Starship](https://starship.rs/) is a prompt that works for any shell.
+1. [z](https://github.com/rupa/z)  quickly jump around your filesystem.
+1. [fzf](https://github.com/junegunn/fzf) “fuzzy finder”. It’s a general-purpose tool that lets you find files, commands in the history, processes, git commits, and more using a fuzzy search.
+1. [ripgrep](https://github.com/BurntSushi/ripgrep)  an alternative to the grep command - much faster one, with sane defaults and colorized output.
+1. [tldr](https://tldr.sh/) Simplified man pages. 
+1. [exa](https://the.exa.website/) a replacement for the ls command.
+1. [ncdu](https://dev.yorhel.nl/ncdu) Disk usage analyzer for the terminal. 
