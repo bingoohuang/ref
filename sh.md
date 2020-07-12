@@ -27,6 +27,13 @@
     
 1. The following are from [My Favorite CLI Tools](https://medium.com/swlh/my-favorite-cli-tools-c2fa484cee52)
 1. [Starship](https://starship.rs/) is a prompt that works for any shell.
+    ```bash
+    # ~/.config/starship.toml
+    # https://starship.rs/config/#time
+    [time]
+    disabled = false
+    format = "🕙[%F %T%.3f]"
+    ```
 1. [z](https://github.com/rupa/z)  quickly jump around your filesystem.
 1. [fzf](https://github.com/junegunn/fzf) “fuzzy finder”. It’s a general-purpose tool that lets you find files, commands in the history, processes, git commits, and more using a fuzzy search.
 1. [ripgrep](https://github.com/BurntSushi/ripgrep)  an alternative to the grep command - much faster one, with sane defaults and colorized output.
