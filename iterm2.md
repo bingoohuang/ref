@@ -20,6 +20,7 @@
 1. `CTL+-` 清除一行
 1. 广播输入: session窗口右键 > Toggle Broadcasting Input，更多设置（shell -> Toggle Broadcasting Input ）
 1. 侧边栏工具箱Toolbelt，下可以打开不同的工具窗口
+1. [itermocil](https://github.com/TomAnthony/itermocil) 自动开多pane一起干活
 
 ## Tabs and Windows
 
