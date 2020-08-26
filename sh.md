@@ -45,8 +45,14 @@
     ```bash
     #/bin/bash
 
-    TOP=${1:-5}
-    SLEEP=${2:-600}
+    # 本脚本每10分钟打印top5的内存占用的进程信息
+    # 用法1(每10分TOP5): sh topmem.sh >> topmem.log
+    # 用法2(每60秒TOP6)：sh topmem.sh 6 60 >> topmem.log
+
+    SLEEP=${1:-600}
+    TOP=${2:-5}
+
+    echo "每$SLEEP秒，打印内存TOP$TOP的进程信息"
 
     while true
     do
@@ -59,6 +65,7 @@
     # USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     # root         1  0.0  0.0 191184  4152 ?        Ss   8月21   0:35 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
 
+    # 每600秒，打印内存TOP5的进程信息
     # 2020-08-26 12:20:57
     # 0%	 1.9%	 155MB	 /usr/bin/gnome-shell
     # 0%	 1.2%	 104MB	 /bin/python
