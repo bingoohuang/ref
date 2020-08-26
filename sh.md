@@ -41,3 +41,28 @@
 1. [exa](https://the.exa.website/) a replacement for the ls command.
 1. [ncdu](https://dev.yorhel.nl/ncdu) Disk usage analyzer for the terminal.
 1. `while true; do date '+%Y-%m-%d %H:%M:%S'; ps aux | grep rig_linux |grep foots| grep -v grep | grep -v tail; sleep 10; done`
+1. 定期记录top5的内存进程情况
+    ```bash
+    #/bin/bash
+
+    TOP=${1:-5}
+    SLEEP=${2:-600}
+
+    while true
+    do
+        date '+%Y-%m-%d %H:%M:%S'
+        ps aux | awk '{mem[$11]+=int($6/1024)}; {cpuper[$11]+=$3};{memper[$11]+=$4}; END {for (i in mem) {print cpuper[i]"%\t",memper[i]"%\t",mem[i]"MB\t",i}}' | sort -k3nr | head -n $TOP
+        sleep $SLEEP
+    done
+
+    # [root@host-192-168-111-30 ~]# ps aux | head -n 2
+    # USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+    # root         1  0.0  0.0 191184  4152 ?        Ss   8月21   0:35 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+
+    # 2020-08-26 12:20:57
+    # 0%	 1.9%	 155MB	 /usr/bin/gnome-shell
+    # 0%	 1.2%	 104MB	 /bin/python
+    # 0.3%	 1.3%	 101MB	 /usr/bin/rigaga
+    # 0.1%	 0.6%	 52MB	 python
+    # 0%	 0.5%	 46MB	 /usr/bin/python
+    ```
