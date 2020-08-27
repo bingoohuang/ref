@@ -4,6 +4,20 @@
     $ date "+%Y-%m-%d %H:%M:%S"
     2020-05-07 09:16:57
     ```
+
+    ```
+    date +"%T.%N" returns the current time with nanoseconds.
+    06:46:41.431857000
+    date +"%T.%6N" returns the current time with nanoseconds rounded to the first 6 digits, which is microseconds.
+
+    06:47:07.183172
+    date +"%T.%3N" returns the current time with nanoseconds rounded to the first 3 digits, which is milliseconds.
+
+    06:47:42.773
+    In general, every field of the date command's format can be given an optional field width.
+    %xN: nice one for the field width!
+    date +"%Y-%m-%d %H:%M:%S.%3N" for milli seconds.
+    ```
 1. `install mysql-client@5.7` mac上安装mysql client
 1. 在.zshrc中`RPROMPT="%{$fg[green]%}[%D{%c}]"`, 在命令行最右边展示`[二  3/ 3 17:14:39 2020]`的效果
 1. 查看当前目录可用空间`df -h .`，及子目录大小`du -hd 1 . | sort -hr`, thanks [Dr. Drang](https://leancrew.com/all-this/2020/05/sort-of-handy/)
