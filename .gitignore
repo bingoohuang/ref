@@ -51,3 +51,4 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .history
+.DS_Store
