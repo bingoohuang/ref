@@ -20,4 +20,15 @@
     + 6f84ace3...73264b95 master -> master (forced update)
    ```
 
+1. n个git分支之间的关系
+
+    ```bash
+    $ git log --branches --graph  --oneline --simplify-by-decoration
+    * 3aaaffc07 (HEAD -> dev) 删除无用的预定义 印章类别
+    * 7c9e7ec52 (origin/out-sign) Merge remote-tracking branch 'origin/dev' into out-sign
+    * 6d2de43e7 (feature/2020-07-31-httplog) BUGFIX
+    * de686c5b0 (origin/master, origin/HEAD, master) 模板代码迁移
+    * 3458f991f Initial commit
+    ```
+
 1. 待续
