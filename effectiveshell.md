@@ -3,6 +3,13 @@
 ## Borrowing Words from Command History
 
 1. “!!” Represents the Last Command， `sudo !!`, it is a synonym for ‘!-1’.
+1. `!cat` to run the last command that started with cat
+1. `!?apache` will search for previous command that CONTAINS the keyword “apache” and execute it. [15 Linux Bash History Expansion Examples You Should Know](https://www.thegeekstuff.com/2011/08/bash-history-expansion/)
+1. You can use all the arguments of the previous command with !*
+    e.g.: This will create some files and remove all of them
+
+    $ touch a.txt b.txt c.txt d.txt
+    $ rm !*
 1. “!$ “ Represents the Last Word in the Last Command
     user@local:~$ vim ~/.bin/my-custom-command.sh
     user@local:~$ chmod +x !$
