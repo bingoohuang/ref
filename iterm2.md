@@ -119,3 +119,11 @@ Clear the screen/pane (when `Ctrl + L` won't work) | `⌘` + `K`  (I use this al
 Broadcast command to all panes in window (nice when needed!) | `⌘` + `Alt` +  `I` (again to toggle)
 Broadcast command to all panes and tabs | `⌘` + `Shift` +  `I` (again to toggle)
 Find Cursor | `⌘` + `/`  _or use a theme or cursor shape that is easy to see_
+
+## imgcat imgls
+
+https://github.com/olivere/iterm2-imagetools
+
+implements the iTerm2 image support as described here. It supports both local files as well as images loaded via http(s).
+
+go install github.com/olivere/iterm2-imagetools/...@latest
